@@ -4,6 +4,9 @@ from DataBase.database import db
 from config import config
 from flask_restx import Api
 
+from Route.user_routes import user_route
+from Route.books_routes import book_route
+
 app = Flask(__name__)
 CORS(app)
 
@@ -13,17 +16,17 @@ db.init_app(app)
 
 with app.app_context():
     db.create_all()
-    
+
 api = Api(
-          app, 
-          title="library management API",
-          description="a simple employee management API build with Flask", 
-          doc="/swagger",
-          prefix='/api/v1'
-          ) 
+    app,
+    title="library management API",
+    description="a simple employee management API build with Flask",
+    doc="/swagger",
+    prefix="/api/v1",
+)
+
+api.add_namespace(user_route)
+api.add_namespace(book_route)
 
 if __name__ == "__main__":
-    app.run(
-            debug=True, 
-            port=5001
-            )
+    app.run(debug=True, port=5001)
