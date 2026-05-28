@@ -16,7 +16,8 @@ book_model = book_route.model(
         "book_genre": fields.String(description="books genre"),
         "publication_year": fields.String(description="books publication year"),
         "total_copies": fields.String(description="books total copies"),
-        "available_copies": fields.String(description="books available copies")
+        "available_copies": fields.String(description="books available copies"),
+        "book_image": fields.String(description="books image path")
     }
 )
 

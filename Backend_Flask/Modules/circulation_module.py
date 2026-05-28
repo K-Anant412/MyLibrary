@@ -2,6 +2,9 @@ from DataBase.database import db
 from datetime import datetime
 
 class Circulation(db.Model):
+    
+    __tablename__ = "circulation"
+    
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     status = db.Column(db.String(100), nullable=False)
     issue_date = db.Column(db.DateTime, nullable=False)

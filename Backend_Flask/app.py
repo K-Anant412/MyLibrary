@@ -7,6 +7,10 @@ from flask_restx import Api
 from Route.user_routes import user_route
 from Route.books_routes import book_route
 
+from Modules.user_module import User
+from Modules.books_module import Books
+from Modules.circulation_module import Circulation
+
 app = Flask(__name__)
 CORS(app)
 

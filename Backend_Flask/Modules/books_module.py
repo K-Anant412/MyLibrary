@@ -11,6 +11,7 @@ class Books(db.Model):
     publication_year = db.Column(db.Integer)    
     total_copies = db.Column(db.Integer, nullable=False)
     available_copies = db.Column(db.Integer, nullable=False)
+    book_img = db.Column(db.String(200))
     
     circulation = db.relationship(
                     "Circulation",
