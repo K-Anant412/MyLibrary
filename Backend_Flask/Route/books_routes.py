@@ -1,6 +1,9 @@
 from flask import request
 from flask_restx import Namespace, Resource, fields
-
+from Service.book_services import(
+                                  add_new_book,
+                                  show_books
+                                  )
 book_route = Namespace(
     "book",
     description="books",
@@ -21,6 +24,7 @@ book_model = book_route.model(
     }
 )
 
+# to add new book
 @book_route.route("/add_new_book", methods=["POST"])
 class add_book(Resource):
 
@@ -28,4 +32,10 @@ class add_book(Resource):
     def post(self):
         
         data = request.get_json()
-        return None
+        return add_new_book(data)
+    
+@book_route.route("/show_all_books", methods=["GET"])
+class show_book(Resource):
+    
+    def get(self):
+        return show_books()

@@ -21,6 +21,10 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
+@app.route("/")
+def home():
+    return "Welcome"
+
 api = Api(
     app,
     title="library management API",

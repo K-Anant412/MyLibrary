@@ -11,7 +11,5 @@ def error_response(message, status_code=400, error_code=None):
         "succes":False,
         "message":message,
         "data":None,
-        "error":{
-            error_code or "API Error"
-        }
+        "error":error_code or "API Error"
     }, status_code
