@@ -34,6 +34,7 @@ class add_book(Resource):
         data = request.get_json()
         return add_new_book(data)
     
+# to show all books
 @book_route.route("/show_all_books", methods=["GET"])
 class show_book(Resource):
     

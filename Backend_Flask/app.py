@@ -6,6 +6,7 @@ from flask_restx import Api
 
 from Route.user_routes import user_route
 from Route.books_routes import book_route
+from Route.auth_routes import authentication_route
 
 from Modules.user_module import User
 from Modules.books_module import Books
@@ -35,6 +36,7 @@ api = Api(
 
 api.add_namespace(user_route)
 api.add_namespace(book_route)
+api.add_namespace(authentication_route)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)

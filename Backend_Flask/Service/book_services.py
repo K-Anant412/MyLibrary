@@ -6,6 +6,8 @@ from Modules.books_module import Books
 def add_new_book(data):
 
     try:
+       
+        
         if not data:
             return error_response("Enter required info")
         
