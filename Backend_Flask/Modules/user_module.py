@@ -10,7 +10,7 @@ class User(db.Model):
 
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False)
-    password = db.Column(db.String(100), nullable=False)
+    password = db.Column(db.String(400), nullable=False)
     
     role = db.Column(db.String(100), nullable=False, default="user")
     max_book_allowed = db.Column(db.Integer, nullable=False, default=20)
