@@ -7,8 +7,8 @@ class Circulation(db.Model):
     
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     status = db.Column(db.String(100), nullable=False)
-    issue_date = db.Column(db.DateTime, nullable=False)
-    return_date = db.Column(db.DateTime, nullable=False)
+    issue_date = db.Column(db.Integer, nullable=False)
+    return_date = db.Column(db.Integer, nullable=False)
     
     user_id = db.Column(
               db.Integer,
