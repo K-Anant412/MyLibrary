@@ -1,51 +1,18 @@
 import { useState } from 'react'
 import { House, BookSearch, BookHeart, Heart, LogOut } from 'lucide-react'
+// import './images/background1.jpg'
+import backgroundImage from './images/background2.PNG'
 import './App.css'
 
 function App() {
   return (
     <>
-      <nav className='w-[250px] h-screen bg-amber-100 flex flex-col p-3'>
-        
-        <div className='w-full p-1.5 h-[30%] border'>  
-          <h1 className='text-[35px] font-extrabold'>InkWell</h1>
-          <p>Never run out of pages</p>
-        </div>
-
-        <div className='h-[55%] border flex items-center justify-center'>
-            <ul className='h-[80%] w-[80%] flex flex-col justify-around items-center'>
-
-              <li className=' w-full flex'>
-                <House />
-                Home
-              </li>
-
-              <li className=' w-full flex'>
-                <BookSearch />
-                Explore
-              </li>
-
-              <li className=' w-full flex'>
-                <BookHeart />
-                My Library
-              </li>
-
-              <li className=' w-full flex'>
-                <Heart />
-                Favorite
-              </li>
-
-            </ul>
-        </div>
-      
-      <div className='h-[15%] border'>
-        <button>
-          <LogOut />
-          Log Out
-        </button>
-      </div>
-
-      </nav>
+    {/* main page */}
+      <section className='w-screen h-screen flex justify-center items-center  bg-cover bg-center' style={{ backgroundImage: `url(${backgroundImage})` }}>
+        <div className='w-[800px] h-[500px] border-2 border-amber-100 rounded-3xl bg-linear-to-t from-sky-500 to-indigo-500'>
+          
+        </div>  
+      </section>
     </>
   )
 }
