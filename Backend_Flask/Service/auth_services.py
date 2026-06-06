@@ -8,7 +8,6 @@ from flask import session
 def register_new_user(data):
 
     try:
-        print(data)
         if not data:
             return error_response("enter required information")
 

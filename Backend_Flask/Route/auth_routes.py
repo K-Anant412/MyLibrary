@@ -26,6 +26,9 @@ class add_user(Resource):
     @authentication_route.expect(registration_model)
     def post(self):
         data = request.get_json()
+        
+        print("React data", data)
+        
         return register_new_user(data)
 
 
@@ -46,6 +49,7 @@ class login_user(Resource):
     @authentication_route.expect(login_model)
     def post(self):
         data = request.get_json()
+        print(data)
         return user_login(data)
 
 
