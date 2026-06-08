@@ -11,12 +11,24 @@ def borrow_book(data):
     try:
         issue_date = date.today()
         due_date = issue_date + timedelta(days=7)
+        
+        book = db.session.get(Books, data["book_id"])
+        
+        if not book:
+            return error_response("book not found,")
+        
+        if book.available_copies <=0:
+            return error_response("currently not available,")
+        
+        book.available_copies -= 1
 
         new_record = Circulation(
             status="borrowed",
+            transaction_type="borrow",
             issue_date=issue_date,
             due_date=due_date,
             return_date=None,
+            purchase_date=None,
             user_id=data["user_id"],
             book_id=data["book_id"],
         )
@@ -38,6 +50,9 @@ def return_book(data):
 
         user = db.session.get(User, user_id)
         book = db.session.get(Books, book_id)
+        
+        if circulation.status == "returned":
+            return error_response("Book already returned")
 
         if not user or not book:
             return error_response("User or Book does not exist")
@@ -51,6 +66,8 @@ def return_book(data):
 
         circulation.status = "return"
         circulation.return_date = date.today()
+        book.available_copies += 1
+        book.read_by += 1
 
         db.session.commit()
 
@@ -82,5 +99,38 @@ def show_circulations():
 
         return success_response("Circulation Details:", circulations)
 
+    except Exception as e:
+        return error_response(str(e))
+
+
+def book_purchase(data):
+    
+    try:
+        book = db.session.get(Books, data["book_id"])
+        
+        if not book:
+            return error_response("book not found,")
+        
+        if book.available_copies <=0:
+            return error_response("currently not available,")
+        
+        book.available_copies -= 1
+        
+        new_record = Circulation(
+            status="purchase",
+            transaction_type="purchase",
+            issue_date=None,
+            due_date=None,
+            return_date=None,
+            purchase_date=date.today(),
+            user_id=data["user_id"],
+            book_id=data["book_id"],
+        )
+
+        db.session.add(new_record)
+        db.session.commit()
+
+        return success_response("thank you for Purchase")
+        
     except Exception as e:
         return error_response(str(e))

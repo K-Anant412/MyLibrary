@@ -12,6 +12,9 @@ class Books(db.Model):
     total_copies = db.Column(db.Integer, nullable=False)
     available_copies = db.Column(db.Integer, nullable=False)
     book_img = db.Column(db.String(200))
+    price = db.Column(db.Integer, default=0)
+    audio_copy = db.Column(db.String(200), default="not available")
+    read_by = db.Column(db.Integer, default=0)
     
     circulation = db.relationship(
                     "Circulation",

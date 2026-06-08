@@ -5,9 +5,12 @@ class Circulation(db.Model):
     
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     status = db.Column(db.String(100), nullable=False)
-    issue_date = db.Column(db.Date, nullable=False)
-    due_date = db.Column(db.Date, nullable=False)
+    transaction_type = db.Column(db.String(20), default=None)
+    
+    issue_date = db.Column(db.Date, nullable=True)
+    due_date = db.Column(db.Date, nullable=True)
     return_date = db.Column(db.Date, nullable=True)
+    purchase_date = db.Column(db.Date, nullable=True)
     
     user_id = db.Column(
               db.Integer,

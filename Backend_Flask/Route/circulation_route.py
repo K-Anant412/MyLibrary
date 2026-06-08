@@ -42,3 +42,12 @@ class show_records(Resource):
     
     def get(self):
         return show_circulations()
+    
+# user buy an Book
+@circulation_route.route("/book_purchase", methods=["POST"])
+class purchase(Resource):
+    
+    @circulation_route.expect(borrow_book_model)
+    def post(self):
+        data = request.get_json()
+        return book_purchase(data)
