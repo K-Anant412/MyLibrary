@@ -1,7 +1,6 @@
 from DataBase.database import db
 from Modules.user_module import User
 from Util.Response import error_response, success_response
-import pandas as pd
 
 def show_user():
     

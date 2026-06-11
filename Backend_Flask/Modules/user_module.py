@@ -13,6 +13,7 @@ class User(db.Model):
     password = db.Column(db.String(400), nullable=False)
 
     role = db.Column(db.String(100), nullable=False, default="user")
+
     max_book_allowed = db.Column(db.Integer, nullable=False, default=20)
     create_at = db.Column(db.DateTime, default=datetime.utcnow)
     address = db.Column(db.String(700), nullable=True)
@@ -20,4 +21,4 @@ class User(db.Model):
     contact = db.Column(db.String(12), nullable=True)
 
     circulation = db.relationship("Circulation", backref="user", lazy=True)
-    membership = db.Column("Membership", backref="user", lazy=True)
+    membership = db.relationship("Members", backref="user", lazy=True)

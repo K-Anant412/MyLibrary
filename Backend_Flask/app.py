@@ -7,6 +7,7 @@ from Route.user_routes import user_route
 from Route.books_routes import book_route
 from Route.auth_routes import authentication_route
 from Route.circulation_route import circulation_route
+from Route.membership_routes import membership_route
 from Modules.user_module import User
 from Modules.books_module import Books
 from Modules.circulation_module import Circulation
@@ -40,6 +41,7 @@ api.add_namespace(user_route)
 api.add_namespace(book_route)
 api.add_namespace(authentication_route)
 api.add_namespace(circulation_route)
+api.add_namespace(membership_route)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
