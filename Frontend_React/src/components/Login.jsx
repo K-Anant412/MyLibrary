@@ -6,7 +6,7 @@ import { GiMonsteraLeaf } from "react-icons/gi"
 import { FaInstagram } from 'react-icons/fa'
 import { BiSolidLeaf } from "react-icons/bi"
 
-const Login = () => {
+const Login = ({showRegister, onSuccess}) => {
 
   const [userName, setUsername] = useState("");
   const [userPassword, setPassword] = useState("");
@@ -25,6 +25,10 @@ const Login = () => {
       });
 
       const data = await response.json();
+
+      if(response.ok){
+        onSuccess()
+      }
 
       console.log(data);
       
@@ -54,9 +58,9 @@ const Login = () => {
 
           <span className='w-[72%] relative'>
           
-          <p className='text-[16px] font-medium px-2 text-[#636363] relative left-4 top-0.4'>Username</p>
+          <p className='text-[16px] font-medium px-2 text-[#0D530E] relative left-4 top-0.4'>Username</p>
 
-            <FaUserCircle size={14} className='absolute text-[#636363] top-1.5 left-1' />
+            <FaUserCircle size={14} className='absolute text-[#0D530E] top-1.5 left-1' />
             
             <input 
             type="text" 
@@ -64,21 +68,49 @@ const Login = () => {
             value={userName}
             onChange={(e)=>setUsername(e.target.value)}
             placeholder='Your username'
-            className='w-full h-12 border-2 border-[#E7E1B1] flex justify-center px-2.5 text-[18px] rounded-2xl'/>
+            className='
+            w-full 
+            h-12 
+            border-2 
+            flex 
+            justify-center 
+            px-2.5 
+            text-[18px] 
+            rounded-2xl 
+            border-[#E7E1B1] 
+            focus:outline-none
+            focus: border-[#0d530E]
+            focus: ring-2
+            focus: ring-[#0D530E]/20
+            '/>
 
           </span>
 
           <span className='w-[72%] relative'>
           
-          <p className='text-[16px] font-medium px-2 text-[#636363] relative left-4 top-0.4'>Password</p>
-            <MdKey size={14} className='absolute text-[#636363] top-1.5 left-1' />
+          <p className='text-[16px] font-medium px-2 text-[#0D530E] relative left-4 top-0.4'>Password</p>
+            <MdKey size={14} className='absolute text-[#0D530E] top-1.5 left-1' />
             <input 
             type="password" 
             name="password" 
             value={userPassword}
             onChange={(e)=>setPassword(e.target.value)}
             placeholder=' Your password'
-            className='w-full h-12 border-2 border-[#E7E1B1] flex justify-center px-2.5 text-[18px] rounded-2xl'/>
+            className='
+            w-full 
+            h-12 
+            border-2 
+            flex 
+            justify-center 
+            px-2.5 
+            text-[18px] 
+            rounded-2xl
+            border-[#E7E1B1] 
+            focus:outline-none
+            focus: border-[#0d530E]
+            focus: ring-2
+            focus: ring-[#0D530E]/20
+            '/>
 
           </span>
 
@@ -99,16 +131,35 @@ const Login = () => {
         {/* Submit button_____________________________________________________________________________________________________________________________________ */}
         <button 
         onClick={handleLogin}
-        className='w-[70%] h-12.5 border-[1.5px] border-[#0D530E] rounded-2xl flex justify-center items-center text-[30px] font-bold text-[#E7E1B1] bg-[#0D530E] shadow-black shadow-xl/22 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl active:translate-y-0'>
+        className='
+        w-[70%] 
+        h-12.5 
+        border-[1.5px] 
+        border-[#0D530E] 
+        rounded-2xl 
+        flex 
+        justify-center 
+        items-center 
+        text-[30px] 
+        font-bold 
+        text-[#FBF5DD]
+        bg-[#0D530E]
+        shadow-lg shadow-[#0D530E]/30
+        cursor-pointer 
+        transition-all 
+        duration-300 
+        hover:-translate-y-1 
+        hover:shadow-xl 
+        active:translate-y-0'>
         Log in
         </button>
       
         {/* _____________________________________________________________________________________________________________________________________ */}
         <div className="flex items-center my-4 w-[70%] h-fit">
 
-          <div className="grow border-t border-gray-400"></div>
-          <span className="mx-4 text-gray-500 text-sm font-medium"> Or login with</span>
-          <div className="grow border-t border-gray-400"></div>
+          <div className="grow border-t border-[#E7E1B1]"></div>
+          <span className="mx-4 text-[#0D530E] text-sm font-medium"> Or login with</span>
+          <div className="grow border-t border-[#E7E1B1]"></div>
 
         </div>
 
@@ -129,7 +180,12 @@ const Login = () => {
         {/* Footer box_____________________________________________________________________________________________________________________________________ */}
         <p className='h-7.5 w-[70%] text-center text-[18px] mt-3 relative -top-4'>
           Don't have account?
-          <a href="#" className='ml-1 text-[19px] font-bold'>Register</a>
+          <button
+            onClick={showRegister}
+            className='ml-1 text-[19px] font-bold cursor-pointer text-[#0D530E] hover:underline'
+          >
+            Register
+          </button>
         </p>
       </div>
     </>

@@ -2,8 +2,9 @@ import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { MdKey, MdEmail } from "react-icons/md";
 import { PiBookOpenTextBold } from "react-icons/pi";
+import InputLine from "./InputLine";
 
-export default function Registration() {
+export default function Registration({showLogin, onSuccess}) {
   const [userName, setUsername] = useState("");
   const [userEmail, setEmail] = useState("");
   const [userPassword, setPassword] = useState("");
@@ -46,6 +47,10 @@ export default function Registration() {
 
         const data = await response.json()
 
+        if(response.ok){
+          onSuccess();
+        }
+
         console.log(data);
 
     } catch (error) {
@@ -72,58 +77,35 @@ export default function Registration() {
 
         {/* Inputs -------------------------------------------------------- */}
         <div className="w-full h-fit gap-2.5 flex items-center justify-center flex-col">
+          <InputLine 
+            lable="Username"
+            icon={FaUserCircle}
+            type="text"
+            name="username"
+            value={userName}
+            onChange={(e)=>setUsername(e.target.value)}
+            placeholder="enter username"
+          />
 
-          {/* Username */}
-          <span className="w-[72%] relative ">
+          <InputLine 
+            lable="Email"
+            icon={MdEmail}
+            type="email"
+            name="email"
+            value={userEmail}
+            onChange={(e)=>setEmail(e.target.value)}
+            placeholder="your@email.com"
+          />
 
-            <p className="text-[15px] font-medium px-2 text-[#636363] relative left-4 top-0.4">Username</p>
-
-            <FaUserCircle size={14} className="absolute text-[#636363] top-1.5 left-1" />
-
-            <input
-              type="text"
-              name="username"
-              value={userName}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Choose a username"
-              className="w-full h-12 border-2 border-[#E7E1B1] flex justify-center px-2.5 text-[17px] rounded-2xl focus:border-[#0D530E] outline-none bg-white"
-            />
-
-          </span>
-
-          {/* Email */}
-          <span className="w-[72%] relative ">
-
-            <p className="text-[15px] font-medium px-2 text-[#636363] relative left-4 top-0.4">Email</p>
-
-            <MdEmail size={14} className="absolute text-[#636363] top-1.5 left-1" />
-
-            <input
-              type="email"
-              name="email"
-              value={userEmail}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
-              className="w-full h-12 border-2 border-[#E7E1B1] flex justify-center px-2.5 text-[17px] rounded-2xl focus:border-[#0D530E] outline-none bg-white"
-            />
-          </span>
-
-          {/* Password */}
-          <span className="w-[72%] relative ">
-
-            <p className="text-[15px] font-medium px-2 text-[#636363] relative left-4 top-0.4">Password</p>
-
-            <MdKey size={14} className="absolute text-[#636363] top-1.5 left-1" />
-
-            <input
-              type="password"
-              name="password"
-              value={userPassword}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Create a password"
-              className="w-full h-12 border-2 border-[#E7E1B1] flex justify-center px-2.5 text-[17px] rounded-2xl focus:border-[#0D530E] outline-none bg-white"
-            />
-          </span>
+          <InputLine 
+            lable="Password"
+            icon={MdKey}
+            type="password"
+            name="password"
+            value={userPassword}
+            onChange={(e)=>setPassword(e.target.value)}
+            placeholder="create a password"
+          />
 
           {/* Strength bars */}
           <div className="w-[72%] flex gap-1.5 -mt-1">
@@ -173,7 +155,12 @@ export default function Registration() {
 
         {/* Footer -------------------------------------------------------- */}
         <p className="w-[70%] text-center text-[17px] -mt-1">
-          <a href="#" className="text-[18px] font-bold text-[#0D530E]">Log in</a>
+          <button
+            onClick={showLogin}
+            className="text-[18px] font-bold text-[#0D530E] cursor-pointer"
+          >
+            Log in
+          </button>
           {" "}to continue reading.
         </p>
 
