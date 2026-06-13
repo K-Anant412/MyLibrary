@@ -47,3 +47,54 @@ def create_member(data):
         return success_response("new member added")
     except Exception as e:
         return error_response(str(e))
+
+
+def show_members():
+
+    try:
+        data = Members.query.all()
+        print(data)
+
+        if not data:
+            return error_response("table is empty")
+
+        allMembers = []
+        for member in data:
+            allMembers.append(
+                {
+                    "id": member.user_id,
+                    "plan": member.plan,
+                    "status": member.status,
+                    "start_date": (
+                        member.start_date.isoformat() if member.start_date else None
+                    ),
+                    "end_date": (
+                        member.end_date.isoformat() if member.end_date else None
+                    ),
+                }
+            )
+
+        return success_response("Member List:", allMembers)
+
+    except Exception as e:
+        return error_response(str(e))
+
+def change_plan(plan, id):
+    
+    try:
+        member = db.session.query(Members, id)
+        
+        if not member:
+            return error_response("member not found")
+        
+        if plan == member.plan:
+            return error_response("already purchsed, try another plan")
+        
+        member.plan = plan
+        
+        db.session.commit()
+        
+        return success_response("your plan was updated")
+    
+    except Exception as e:
+        return error_response(str(e))
