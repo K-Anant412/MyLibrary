@@ -29,9 +29,9 @@ class get_members(Resource):
     def get(self):
         return show_members()
 
+@membership_route.route("/change_plan", methods=["PUT"])
 @membership_route.param("plan", description="changing the plan", _in="path")
 @membership_route.param("id", description="user id", _in="path")
-@membership_route.route("/change_plan", methods=["PUT"])
 class change_plan(Resource):
     
     def put(self, id, plan):

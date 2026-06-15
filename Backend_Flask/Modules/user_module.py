@@ -14,7 +14,7 @@ class User(db.Model):
 
     role = db.Column(db.String(100), nullable=False, default="user")
 
-    max_book_allowed = db.Column(db.Integer, nullable=False, default=20)
+    max_book_allowed = db.Column(db.Integer, nullable=False, default=3)
     create_at = db.Column(db.DateTime, default=datetime.utcnow)
     address = db.Column(db.String(700), nullable=True)
     pin_code = db.Column(db.Integer, nullable=True)
