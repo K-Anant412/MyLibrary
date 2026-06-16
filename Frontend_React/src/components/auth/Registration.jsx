@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { MdKey, MdEmail } from "react-icons/md";
 import { PiBookOpenTextBold } from "react-icons/pi";
-import InputLine from "./InputLine";
+import InputLine from "../utils/InputLine";
 
 export default function Registration({showLogin, onSuccess}) {
   const [userName, setUsername] = useState("");

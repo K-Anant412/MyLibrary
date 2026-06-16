@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import backgroundImage from './images/background3.jpg'
 import Login from './components/auth/Login'
-import Registration from './components/Registration'
+import Registration from './components/auth/Registration'
 import './App.css'
 
 
@@ -40,7 +40,7 @@ function App() {
 
   return (
     <>
-      <section className='w-screen h-screen overflow-hidden flex '>
+      <section className='w-screen h-screen overflow-hidden flex bg-green-200  '>
 
       <Navbar />
 
