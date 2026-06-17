@@ -1,5 +1,6 @@
 from DataBase.database import db
 from Modules.membership_module import Members
+from Modules.membership_module import MembershipPlan
 from Modules.user_module import User
 from datetime import date,  timedelta
 from Util.Response import error_response, success_response
@@ -10,8 +11,7 @@ PLAN_DETAILS = {
     "quarterly": {"days":90, "max_books": 14, "status": "Gold Member"},
     "yearly": {"days":365, "max_books": 20, "status": "Platinum Member"}
 }
-
-
+        
 def create_member(data):
 
     try:
@@ -31,9 +31,13 @@ def create_member(data):
         user.contact = data["contact"]
         user.pin_code = data["pin_code"]
         user.max_book_allowed = plan_info["max_books"]
+        
+        plan = MembershipPlan.query.filter_by(name=data["membership"]).first()
+        if not plan:
+            return error_response("plan not found")
 
         member_record = Members(
-            plan=data["membership"],
+            plan=plan,
             start_date=start_date,
             end_date=end_date,
             status=plan_info["status"],

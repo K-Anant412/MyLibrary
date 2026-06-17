@@ -11,15 +11,15 @@ def borrow_book(data):
     try:
         issue_date = date.today()
         due_date = issue_date + timedelta(days=7)
-        
+
         book = db.session.get(Books, data["book_id"])
-        
+
         if not book:
             return error_response("book not found,")
-        
-        if book.available_copies <=0:
+
+        if book.available_copies <= 0:
             return error_response("currently not available,")
-        
+
         book.available_copies -= 1
 
         new_record = Circulation(
@@ -50,8 +50,8 @@ def return_book(data):
 
         user = db.session.get(User, user_id)
         book = db.session.get(Books, book_id)
-        
-        if circulation.status == "returned":
+
+        if Circulation.status == "returned":
             return error_response("Book already returned")
 
         if not user or not book:
@@ -104,18 +104,18 @@ def show_circulations():
 
 
 def book_purchase(data):
-    
+
     try:
         book = db.session.get(Books, data["book_id"])
-        
+
         if not book:
             return error_response("book not found,")
-        
-        if book.available_copies <=0:
+
+        if book.available_copies <= 0:
             return error_response("currently not available,")
-        
+
         book.available_copies -= 1
-        
+
         new_record = Circulation(
             status="purchase",
             transaction_type="purchase",
@@ -131,6 +131,6 @@ def book_purchase(data):
         db.session.commit()
 
         return success_response("thank you for Purchase")
-        
+
     except Exception as e:
         return error_response(str(e))

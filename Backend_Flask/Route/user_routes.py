@@ -36,3 +36,10 @@ class remove_user(Resource):
     @user_route.param("id", description="enter user id", _in="path")
     def delete(self, id):
         return delete_user(id)
+    
+@user_route.route("/find_user/<int:id>", methods=["GET"])
+class find_user(Resource):
+    
+    @user_route.param('id', description="user id", _in="path")
+    def get(self, id):
+        return find_user_id(id)
