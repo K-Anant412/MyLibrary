@@ -1,78 +1,75 @@
 import React from 'react'
 import { BiSolidLeaf } from "react-icons/bi"
 import { NavLink } from 'react-router-dom'
-import { FiHome } from 'react-icons/fi'
-import { AiFillProduct } from 'react-icons/ai'
-
+import { IoHome } from 'react-icons/io5'
+import { LuLibrary } from 'react-icons/lu'
+import { MdOutlineExplore, MdOutlinePaid } from 'react-icons/md'
+import { IoSettingsOutline } from "react-icons/io5"
 
 const Navbar = () => {
 
     const isActiveLink = ({ isActive })=>
-                                ` w-[70%] flex items-center justify-center border border-[#E7E1B1] rounded-2xl px-4 py-2 cursor-pointer gap-1 
-                                ${
-                                    isActive
-                                        ? "bg-[#E7E1B1] scale-105"
-                                        : "border-[#19701bf5] hover:bg-[#19701bf5]"
+                            ` h-20 w-20 flex items-center justify-center border border-[#D4C37C] rounded-2xl cursor-pointer gap-1 text-[#D4C37C] 
+                              shadow-[12px_12px_24px_rgba(247, 244, 233, 0.87),-12px_-12px_50px_rgba(247, 244, 233, 0.87)]
+                            ${
+                                isActive
+                                     ? "bg-[#76714acd] scale-105"
+                                     : "border-[#19701bf5] hover:bg-[#76714acd]"
                                 }`
 
     return (
         <>
-        <nav
-            className="
-                w-72 h-[95%]
+            <nav className='
+                w-30 h-screen
                 flex flex-col
-                bg-[#bbf7d0]  {/* Assuming this is matching your exact green background */}
-                shrink-0 z-50
-                relative top-4 left-5
-                border
-                border-[#a2d1b3]
-                rounded-[20px]
-                shadow-[13px_14px_30px_rgba(8,85,9,0.2),-12px_-12px_40px_rgba(2,122,27,0.3)]
-                transition-all duration-300
-            "
+                items-center
+                bg-[#1E7A28]
+                shadow-2xl
+                z-50 p-0
+                '
             >
+                <h1 className='
+                   text-[20px]
+                   font-bold
+                   relative 
+                   w-full
+                   h-30
+                   border
+                   bg-amber-100
+                   flex-1
+                '>
+                HelloWorld</h1>
 
-                <div className=' w-full h-[30%] flex flex-col pt-6 gap-1.5 items-center relative top-6.5'>
-                    <h1 className='flex items-center gap-1.5 text-4xl font-bold w-full text-[#76714a] hover:underline font-[DM_Serif_Text] relative left-12'>
-                        < BiSolidLeaf size={40} />
-                        InkWell
-                    </h1>
-                    <h3 className='text-2xl font-semibold w-full text-[#706d50] h-full text-center relative -left-0.5'>Start reading.</h3>
+                <div className='w-full flex-6 flex flex-col items-center justify-center gap-7'>
+
+                    <NavLink to="/"
+                    className={isActiveLink}
+                    >
+                        <IoHome size={45}  />
+                    </NavLink>
+
+                    <NavLink to="/explore"
+                    className={isActiveLink}
+                    >
+                        <MdOutlineExplore size={45} />
+                    </NavLink>
+
+                    <NavLink to="/mylibrary"
+                    className={isActiveLink}
+                    >
+                        <LuLibrary size={45} />
+                    </NavLink>
+
+                    <NavLink to="/membership"
+                    className={isActiveLink}
+                    >
+                        <MdOutlinePaid size={45} />
+                    </NavLink>
+
                 </div>
-
-                <div className='w-full h-[60%]'>
-                    <ul className='list-none w-full h-full flex flex-col items-center gap-4'>
-
-                        <NavLink 
-                            to="/" 
-                            className={isActiveLink}>
-                            <span className='text-[24px] font-bold relative -top-0.5'>Home</span>
-                        </NavLink>
-
-                        <NavLink 
-                            to="/explore" 
-                            className={isActiveLink}>
-                            <span className='text-[24px]  font-bold relative -top-0.5'>Browse Books</span>
-                        </NavLink>
-
-                        <NavLink 
-                            to="/mylibrary" 
-                            className={isActiveLink}>
-                            <span className='text-[24px]  font-bold relative -top-0.5'>My Library</span>
-                        </NavLink>
-
-                        <NavLink 
-                            to="/membership" 
-                            className={isActiveLink}>
-                            <span className='text-[24px]  font-bold relative -top-0.5'>Memberships</span>
-                        </NavLink>
-
-                    </ul>
-                </div>
-
-                <div className='w-full h-[10%] flex justify-center'>
-                    <button className='w-[70%] h-12 border-[#E7E1B1] border rounded-2xl text-[26px] text-[#ccc592] font-extrabold flex items-center justify-center  relative -top-5'>
-                        Log Out
+                <div  className='w-full flex-1 flex items-center justify-center relative bottom-2'>
+                    <button className='w-20 h-20 flex items-center justify-center rounded-2xl border text-[#D4C37C]'>
+                        <IoSettingsOutline size={45}/>
                     </button>
                 </div>
 
