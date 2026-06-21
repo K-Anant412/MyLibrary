@@ -9,12 +9,11 @@ import { IoSettingsOutline } from "react-icons/io5"
 const Navbar = () => {
 
     const isActiveLink = ({ isActive })=>
-                            ` h-20 w-20 flex items-center justify-center border border-[#D4C37C] rounded-2xl cursor-pointer gap-1 text-[#D4C37C] 
-                              shadow-[12px_12px_24px_rgba(247, 244, 233, 0.87),-12px_-12px_50px_rgba(247, 244, 233, 0.87)]
+                            ` h-20 w-20 flex items-center justify-center border border-[#D4C37C] cursor-pointer gap-1 text-[#D4C37C] transition duration-400 
                             ${
                                 isActive
-                                     ? "bg-[#76714acd] scale-105"
-                                     : "border-[#19701bf5] hover:bg-[#76714acd]"
+                                     ? "bg-[#76714acd] scale-105 rounded-2xl"
+                                     : "border-[#19701bf5] hover:bg-[#76714acd] rounded-[50%]"
                                 }`
 
     return (
@@ -23,7 +22,10 @@ const Navbar = () => {
                 w-30 h-screen
                 flex flex-col
                 items-center
-                bg-[#1E7A28]
+                bg-linear-to-br
+                from-[#41a646]
+                via-[#4db452e2]
+                to-[#4a604a]
                 shadow-2xl
                 z-50 p-0
                 '
@@ -37,6 +39,7 @@ const Navbar = () => {
                    border
                    bg-amber-100
                    flex-1
+                   
                 '>
                 HelloWorld</h1>
 
