@@ -18,7 +18,7 @@ const  Home= () => {
     <>
       <section className='w-full h-full bg-green-200 flex items-center justify-center flex-col overflow-y-scroll scrollbar-none'>
           
-          <div className='w-[97%] h-15 relative -top-85'>
+          <div className='w-[87%] h-15 absolute top-10 left-43'>
               <form 
                 onSubmit={handleSubmit(onSubmit)} 
                 className='w-full h-full items-center flex gap-1.5'
@@ -36,6 +36,10 @@ const  Home= () => {
                 </button>
 
               </form>
+          </div>
+
+          <div className='w-125 h-70 border-2 rounded-2xl shadow-2xl'>
+
           </div>
           
       </section>
