@@ -39,10 +39,10 @@ const Login = ({showRegister, onSuccess}) => {
 
   return (
     <>
-        <div className='w-[35%] h-[84%] border-5 rounded-4xl border-[#E7E1B1] z-50 relative left-[-350px] bg-[#FBF5DD] flex flex-col items-center justify-center gap-2.5 shadow-2xl shadow-black/50'>
+        <div className='w-[35%] h-[84%] border-5 rounded-4xl border-[#E7E1B1] z-50 relative -left-87.5 bg-[#FBF5DD] flex flex-col items-center justify-center gap-2.5 shadow-2xl shadow-black/50'>
         
         {/* Header box_____________________________________________________________________________________________________________________________________ */}
-        <div className='w-full h-17.5 flex flex-col items-center justify-center relative top-[-20px]'>
+        <div className='w-full h-17.5 flex flex-col items-center justify-center relative -top-5'>
 
           <h1 className='text-[38px] font-bold font-[DM_Serif_Text] flex items-center justify-center'>
             Welcome Back

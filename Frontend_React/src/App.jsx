@@ -40,7 +40,7 @@ function App() {
 
   return (
     <>
-      <section className='w-screen h-screen overflow-hidden flex bg-green-200'>
+      <section className='w-screen h-screen overflow-hidden flex' style={{ backgroundImage: `url(${backgroundImage})` }}>
 
       <Navbar />
 

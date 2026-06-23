@@ -3,6 +3,7 @@ import Navbar from '../Navbar'
 import { useForm } from 'react-hook-form'
 import { TbSearch } from 'react-icons/tb'
 
+
 const  Home= () => {
 
   const {
@@ -16,7 +17,7 @@ const  Home= () => {
 
   return (
     <>
-      <section className='w-full h-full bg-green-200 flex items-center justify-center flex-col overflow-y-scroll scrollbar-none'>
+      <section className='w-full h-full flex items-center justify-center flex-col overflow-y-scroll scrollbar-none'>
           
           <div className='w-[87%] h-15 absolute top-10 left-43'>
               <form 
@@ -38,9 +39,16 @@ const  Home= () => {
               </form>
           </div>
 
-          <div className='w-125 h-70 border-2 rounded-2xl shadow-2xl'>
+          <div className='w-full h-full'>
+            <div className='relative top-30 flex gap-2 flex-col justify-center p-3.5 w-full h-95'>
+              
+              <h1 className='border border-[#D4C37C] w-60 h-12 rounded-2xl items-center text-[24px] bg-amber-50 font-semibold flex justify-center shadow-2xl' >New Arrivals</h1>
+              
+              <div className='w-full h-70 border-2 border-[#D4C37C] rounded-2xl bg-amber-100 shadow-2xl'>
 
-          </div>
+              </div>
+            </div>
+          </div>  
           
       </section>
     </>
