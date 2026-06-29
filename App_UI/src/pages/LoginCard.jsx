@@ -1,8 +1,56 @@
 import React from 'react'
+import { useForm } from 'react-hook-form' 
 
-
+import { FaRegUserCircle } from 'react-icons/fa'
+import { SiMaildotru } from "react-icons/si";
+import { GiBookmark } from "react-icons/gi";
+import { BsThreeDots } from "react-icons/bs";
+import { BsGoogle } from "react-icons/bs";
+import { RiWhatsappFill } from "react-icons/ri";
+import { AiFillInstagram } from "react-icons/ai";
+import { SiApacheairflow } from "react-icons/si";
 
 const LoginCard = () => {
+
+    const [user, setUser] = useState("")
+    const [email, setEmail] = useState("")
+  
+    const {
+      register,
+      handleSubmit,
+      watch,
+      formState: { errors },
+    } = useForm()
+  
+    const onSubmit = async() => {
+      try {
+        const response = await fetch(
+          "/api/v1/auth/login",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(
+              {
+                user_name: user,
+                email: email
+              }
+            ),
+          }
+        );
+  
+        const data = await response.json();
+  
+        if( response.ok ) {
+          alert("user login successfull")
+        }
+        console.log(data);
+  
+      } catch ( error ) {
+        alert(error)
+      }
+    }
 
 
   return (
@@ -12,7 +60,7 @@ const LoginCard = () => {
           <div className='pt-3 w-[55%] h-[85%] border-2 rounded-3xl flex flex-col items-center justify-center border-none shadow-inner shadow-[#5a5959de] bg-[#f9e3c4] relative overflow-hidden'>
             
             <div className='absolute w-2 h-225 bg-[#9c2754ee] right-4 z-0'></div>
-            <div className='absolute w-6 h-225 bg-[#9c2754] right-8 z-1 rotate-90 top-10'></div>
+            <div className='absolute w-6 h-225 bg-[#9c2754] right-8 z-1 rotate-90 top-7'></div>
 
             <div className='w-full h-20  flex items-center justify-center relative -top-22 z-20'>
 
@@ -26,6 +74,7 @@ const LoginCard = () => {
             </div>
              
              <form 
+              onSubmit={handleSubmit(onSubmit)}
               className='w-full h-fit p-1 flex flex-col items-center justify-center gap-4 relative -top-15 z-20' 
              >
 
@@ -38,7 +87,7 @@ const LoginCard = () => {
                 <input 
                   placeholder='Username' 
                   {...register("username")} 
-                  className='placeholder:text-[#656363] px-12 w-[80%] h-12 border rounded-2xl text-2xl font-bold rounded-bl-3xl z-20 rounded-tl-3xl border-[#6b3449d2]'  
+                  className='placeholder:text-[#656363] font-sans px-12 w-[80%] h-12 border rounded-2xl text-2xl font-medium rounded-bl-3xl z-20 rounded-tl-3xl border-[#6b3449d2]'  
                 />
 
               </div>
@@ -52,14 +101,13 @@ const LoginCard = () => {
               <input 
                 placeholder='Email'
                 {...register("email")} 
-                className='placeholder:text-[#656363] px-12 w-[80%] h-12 border rounded-2xl text-2xl font-bold rounded-bl-3xl rounded-tl-3xl text-[#656363] border-[#6b3449d2]'    
+                className='placeholder:text-[#656363] font-sans px-12 w-[80%] h-12 border rounded-2xl text-2xl font-medium rounded-bl-3xl rounded-tl-3xl text-[#656363] border-[#6b3449d2]'    
                 />
               
               </div>
 
               <button
                 className='w-[70%] h-12 border rounded-4xl text-2xl font-bold font-sans bg-[#9c2754ee] transition duration-300 text-white hover:-translate-y-0.5 bg-[#9c2754fe] cursor-pointer '
-                onClick={handleSubmit(onSubmit)}
               >
                 Log In
               </button>
@@ -73,7 +121,7 @@ const LoginCard = () => {
               
             </form>
 
-            <div className='w-full h-10 py-2.5 flex items-center justify-center font-semibold font-sans absolute bottom-36 gap-1'>
+            <div className='w-full h-10 py-2.5 flex items-center justify-center font-semibold font-sans absolute bottom-30 gap-1'>
               <span>
                 <BsThreeDots size={25} />
               </span>
@@ -83,7 +131,7 @@ const LoginCard = () => {
               </span>
             </div>
 
-            <div className='w-full h-35 absolute bottom-12 px-11 flex items-center justify-center gap-6'>
+            <div className='w-full h-35 absolute bottom-7 px-11 flex items-center justify-center gap-6'>
                 <a href="#">
                     <AiFillInstagram size={35} className='text-[#656363] cursor-pointer w-10 h-10 border p-1 rounded-[50%] shadow-black inset-1 transition-all duration-200 hover:rounded-xl' />
                 </a> 
@@ -97,6 +145,18 @@ const LoginCard = () => {
                 </a>
             </div>
           </div>
+        </div>
+
+        <div className='w-[50%] h-[50%] flex flex-col items-center justify-center text-white'>
+          <h1 
+            className='w-full h-40 flex items-center text-[100px] font-bold relative left-10 top-12 text-shadow-lg text-white transition-all duration-75 hover:text-transparent [-webkit-text-stroke:2px_white]'
+          >Read.</h1>
+          <h1 
+            className='w-full h-40 flex items-center text-[100px] font-bold relative left-10 text-white transition-all duration-75 hover:text-transparent [-webkit-text-stroke:2px_white]'
+          >Dream.</h1>
+          <h1 
+            className='w-full h-40 flex items-center text-[100px] font-bold relative left-10 -top-12 text-white transition-all duration-75 hover:text-transparent [-webkit-text-stroke:2px_white]'
+          >Repeat.</h1>     
         </div>
     </>
   )
