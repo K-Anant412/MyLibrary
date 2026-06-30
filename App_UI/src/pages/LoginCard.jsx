@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import { useForm } from 'react-hook-form' 
 
 import { FaRegUserCircle } from 'react-icons/fa'
@@ -11,9 +12,6 @@ import { AiFillInstagram } from "react-icons/ai";
 import { SiApacheairflow } from "react-icons/si";
 
 const LoginCard = () => {
-
-    const [user, setUser] = useState("")
-    const [email, setEmail] = useState("")
   
     const {
       register,
@@ -22,10 +20,10 @@ const LoginCard = () => {
       formState: { errors },
     } = useForm()
   
-    const onSubmit = async() => {
+    const onSubmit = async(data) => {
       try {
         const response = await fetch(
-          "/api/v1/auth/login",
+          "http://127.0.0.1:5001/api/v1/auth/login",
           {
             method: "POST",
             headers: {
@@ -33,19 +31,24 @@ const LoginCard = () => {
             },
             body: JSON.stringify(
               {
-                user_name: user,
-                email: email
+                user_name: data.user_name,
+                account_password: data.password
               }
             ),
           }
         );
   
-        const data = await response.json();
+        const resData = await response.json();
   
         if( response.ok ) {
           alert("user login successfull")
+          const token = resData.token;
+          localStorage.setItem("authToken", token)
+
+        }else{
+          console.log("Something wrong", resData);
         }
-        console.log(data);
+        console.log(resData);
   
       } catch ( error ) {
         alert(error)
@@ -86,8 +89,8 @@ const LoginCard = () => {
 
                 <input 
                   placeholder='Username' 
-                  {...register("username")} 
-                  className='placeholder:text-[#656363] font-sans px-12 w-[80%] h-12 border rounded-2xl text-2xl font-medium rounded-bl-3xl z-20 rounded-tl-3xl border-[#6b3449d2]'  
+                  {...register("user_name")} 
+                  className='placeholder:text-[#656363] font-sans px-12 w-[80%] h-12 border rounded-2xl text-2xl font-medium rounded-bl-3xl z-20 rounded-tl-3xl text-[#656363] border-[#6b3449d2]'  
                 />
 
               </div>
@@ -99,8 +102,8 @@ const LoginCard = () => {
               </span>
 
               <input 
-                placeholder='Email'
-                {...register("email")} 
+                placeholder='Password'
+                {...register("password")} 
                 className='placeholder:text-[#656363] font-sans px-12 w-[80%] h-12 border rounded-2xl text-2xl font-medium rounded-bl-3xl rounded-tl-3xl text-[#656363] border-[#6b3449d2]'    
                 />
               

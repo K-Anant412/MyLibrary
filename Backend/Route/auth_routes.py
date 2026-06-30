@@ -49,7 +49,6 @@ class login_user(Resource):
     @authentication_route.expect(login_model)
     def post(self):
         data = request.get_json()
-        print(data)
         return user_login(data)
 
 

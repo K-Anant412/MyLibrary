@@ -16,7 +16,7 @@ function App() {
         }}
         >
       
-        {/* <LoginCard /> */}
+        <LoginCard />
 
       </section>
     </>
