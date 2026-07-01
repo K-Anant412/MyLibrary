@@ -2,6 +2,8 @@ import { useState } from 'react'
 import background_image_one from './images/background_image_one.jpg'
 
 import LoginCard from './pages/LoginCard'
+import Registration from './pages/Registration'
+import HomePage from './pages/HomePage'
 
 import './App.css'
 
@@ -16,7 +18,9 @@ function App() {
         }}
         >
       
-        <LoginCard />
+        {/* <LoginCard /> */}
+        <Registration />
+        {/* <HomePage /> */}
 
       </section>
     </>

@@ -1,6 +1,8 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form' 
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react';
 
 import { FaRegUserCircle } from 'react-icons/fa'
 import { SiMaildotru } from "react-icons/si";
@@ -12,6 +14,14 @@ import { AiFillInstagram } from "react-icons/ai";
 import { SiApacheairflow } from "react-icons/si";
 
 const LoginCard = () => {
+
+    const cardRef = useRef(false)
+
+    const [isLogin, setIsLogin] = useState(false)
+
+    useGSAP(()=>{
+      
+    }, [isLogin])
   
     const {
       register,
@@ -117,7 +127,7 @@ const LoginCard = () => {
               
               <span className='flex gap-1 font-sans'>
                 don't have account?  
-                <a href="#" className='text-blue-400 cursor-pointer transition duration-300 hover:text-blue-500'>
+                <a href="#" onClick={()=>setIsLogin(!isLogin)} className='text-blue-400 cursor-pointer transition duration-300 hover:text-blue-500'>
                   create here
                 </a>
               </span>
@@ -150,7 +160,7 @@ const LoginCard = () => {
           </div>
         </div>
 
-        <div className='w-[50%] h-[50%] flex flex-col items-center justify-center text-white'>
+        {/* <div className='w-[50%] h-[50%] flex flex-col items-center justify-center text-white'>
           <h1 
             className='w-full h-40 flex items-center text-[100px] font-bold relative left-10 top-12 text-shadow-lg text-white transition-all duration-75 hover:text-transparent [-webkit-text-stroke:2px_white]'
           >Read.</h1>
@@ -160,7 +170,7 @@ const LoginCard = () => {
           <h1 
             className='w-full h-40 flex items-center text-[100px] font-bold relative left-10 -top-12 text-white transition-all duration-75 hover:text-transparent [-webkit-text-stroke:2px_white]'
           >Repeat.</h1>     
-        </div>
+        </div> */}
     </>
   )
 }
