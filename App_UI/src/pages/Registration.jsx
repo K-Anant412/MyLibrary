@@ -12,7 +12,39 @@ const Registration = () => {
           formState: { errors },
         } = useForm()
 
-    const onSubmit = console.log("Registration")
+    const onSubmit = async(data) => {
+
+      try {
+        const response = await fetch(
+          "http://127.0.0.1:5001/api/v1/auth/register",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(
+              {
+                user_name: data.user_name,
+                user_email: data.email,
+                user_password: data.password
+              }
+            ),
+          }
+        );
+
+        const resData = await response.json()
+
+        if( response.ok ) {
+          alert("Registration success")
+          console.log(resData)
+        }else{
+          alert("something is wrong")
+        }
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
   return (
     <>
         <div className='w-[48%] h-[85%] absolute left-0 bg-white/30 backdrop-blur-md border border-white/20 rounded-tr-2xl rounded-br-2xl p-8 shadow-lg flex items-center justify-center overflow-hidden'>
@@ -54,6 +86,7 @@ const Registration = () => {
                                   </div>
                     
                                   <button
+                                  type='submit'
                                     className='w-[70%] h-12 border rounded-4xl text-2xl font-bold font-sans bg-[#9c2754ee] transition duration-300 text-white hover:-translate-y-0.5 bg-[#9c2754fe] cursor-pointer '
                                   >
                                     create

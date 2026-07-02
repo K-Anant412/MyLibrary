@@ -19,8 +19,8 @@ function App() {
         >
       
         {/* <LoginCard /> */}
-        <Registration />
-        {/* <HomePage /> */}
+        {/* <Registration /> */}
+        <HomePage />
 
       </section>
     </>
