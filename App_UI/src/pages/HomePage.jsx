@@ -1,4 +1,6 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
+
 import { GiBookmark } from "react-icons/gi";
 import { GoHomeFill } from "react-icons/go";
 import { AiFillProduct } from "react-icons/ai";
@@ -24,26 +26,30 @@ const HomePage = () => {
 
             <div className='w-[80%] h-fit mt-3 flex flex-col items-center justify-center relative top-20 -right-7'>
                 <ul className=' text-amber-50 gap-1.5 flex flex-col w-full items-center h-fit text-[28px] font-sans font-semibold cursor-pointer'>
-                    <li className='border bg-[#831f44] border-r-[#831f44] w-full h-15 flex items-center gap-1'>
+                    <NavLink to="/" className=' w-full h-15 flex items-center gap-1'>
                         <GoHomeFill size={30} />
                         Home
-                    </li>
-                    <li className=' w-full h-15 flex items-center gap-1'>
+                    </NavLink>
+
+                    <NavLink to="/collection" className=' w-full h-15 flex items-center gap-1'>
                         <AiFillProduct size={30} />
                         Library
-                    </li>
-                    <li className=' w-full h-15 flex items-center gap-1'>
+                    </NavLink>
+
+                    <NavLink to="/explore" className=' w-full h-15 flex items-center gap-1'>
                         <MdExplore size={30} />
                         Explore
-                    </li>
-                    <li className=' w-full h-15 flex items-center gap-1.5'>
+                    </NavLink>
+
+                    <NavLink to="/profile" className=' w-full h-15 flex items-center gap-1.5'>
                         <FaUserCircle size={26} />
                         Profile
-                    </li>
-                    <li className=' w-full h-15 flex items-center gap-1'>
+                    </NavLink>
+
+                    <NavLink to="/member" className=' w-full h-15 flex items-center gap-1'>
                         <HiCurrencyDollar size={30} />
                         Member
-                    </li>
+                    </NavLink>
                 </ul>
 
 
