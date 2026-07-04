@@ -9,6 +9,7 @@ import Explore from './pages/Explore'
 import Profile from './pages/Profile'
 import Member from './pages/Member'
 import Collection from './pages/Collection'
+import Navbar from './utils/Navbar'
 
 import './App.css'
 
@@ -25,6 +26,8 @@ function App() {
       
         {/* <LoginCard /> */}
         {/* <Registration /> */}
+
+        <Navbar />
 
         <Routes>
           <Route path='/' element={ <HomePage />} />
