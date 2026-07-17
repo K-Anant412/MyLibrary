@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form' 
+import LoginCard from './LoginCard';
 
 import { FaPencil } from "react-icons/fa6";
 
@@ -94,9 +95,9 @@ const Registration = () => {
                                   
                                   <span className='flex gap-1 font-sans'>
                                     already have account?  
-                                    <a href="#" onClick={()=>setIsLogin(!isLogin)} className='text-blue-400 cursor-pointer transition duration-300 hover:text-blue-500'>
+                                    <Link to={<LoginCard />} onClick={()=>setIsLogin(!isLogin)} className='text-blue-400 cursor-pointer transition duration-300 hover:text-blue-500'>
                                       login
-                                    </a>
+                                    </Link>
                                   </span>
                                   
                     </form>

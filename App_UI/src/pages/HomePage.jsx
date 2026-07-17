@@ -43,7 +43,7 @@ const HomePage = () => {
 
           </div>
 
-          <div id='bottom_header' className='w-full h-15 mt-2 flex items-center justify-around'>
+          {/* <div id='bottom_header' className='w-full h-15 mt-2 flex items-center justify-around'>
             
             <div className="avatar flex items-center gap-1 rounded-2xl hover:bg-amber-50 h-full w-fit">
               <div className="w-12 rounded">
@@ -96,7 +96,7 @@ const HomePage = () => {
             <RxDividerVertical size={30} />
             </div>
             
-          </div>
+          </div> */}
 
           <div className='relative w-full h-70 border-2 mt-2 flex flex-col p-2'>
             <h1 className='text-2xl flex items-center justify-between w-full font-medium px-2'>

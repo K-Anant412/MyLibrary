@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form' 
 import gsap from 'gsap'
@@ -12,6 +13,8 @@ import { BsGoogle } from "react-icons/bs";
 import { RiWhatsappFill } from "react-icons/ri";
 import { AiFillInstagram } from "react-icons/ai";
 import { SiApacheairflow } from "react-icons/si";
+
+import Registration from './Registration';
 
 const LoginCard = () => {
 
@@ -127,9 +130,9 @@ const LoginCard = () => {
               
               <span className='flex gap-1 font-sans'>
                 don't have account?  
-                <a href="#" onClick={()=>setIsLogin(!isLogin)} className='text-blue-400 cursor-pointer transition duration-300 hover:text-blue-500'>
+                <Link to={<Registration />} onClick={()=>setIsLogin(!isLogin)} className='text-blue-400 cursor-pointer transition duration-300 hover:text-blue-500'>
                   create here
-                </a>
+                </Link>
               </span>
               
             </form>
